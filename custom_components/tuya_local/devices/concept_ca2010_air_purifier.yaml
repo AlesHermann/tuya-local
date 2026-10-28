@@ -1,0 +1,81 @@
+# Concept CA2010 Perfect Air Smart
+# Tested locally with Tuya Local 2026.10.0 on 2026-10-28.
+# App schedules are not a locally exposed duration control.
+name: Air purifier
+entities:
+  - entity: fan
+    translation_key: air_purifier
+    dps:
+      - id: 1
+        name: switch
+        type: boolean
+      - id: 8
+        name: speed
+        type: string
+        mapping:
+          - dps_val: "1"
+            value: 33
+          - dps_val: "2"
+            value: 67
+          - dps_val: "3"
+            value: 100
+
+  - entity: switch
+    translation_key: ionizer
+    category: config
+    dps:
+      - id: 6
+        name: switch
+        type: boolean
+
+  - entity: switch
+    translation_key: uv_sterilization
+    category: config
+    dps:
+      - id: 101
+        name: switch
+        type: boolean
+
+  - entity: switch
+    name: Smart mode
+    category: config
+    dps:
+      - id: 102
+        name: switch
+        type: boolean
+
+  - entity: switch
+    name: Sleep mode
+    category: config
+    dps:
+      - id: 103
+        name: switch
+        type: boolean
+
+  - entity: lock
+    translation_key: child_lock
+    category: config
+    dps:
+      - id: 5
+        name: lock
+        type: boolean
+
+  - entity: sensor
+    class: pm25
+    dps:
+      - id: 105
+        name: sensor
+        type: integer
+        class: measurement
+        unit: ugm3
+
+  - entity: sensor
+    name: Filter operating time
+    class: duration
+    category: diagnostic
+    dps:
+      - id: 104
+        name: sensor
+        type: integer
+        class: measurement
+        unit: h
